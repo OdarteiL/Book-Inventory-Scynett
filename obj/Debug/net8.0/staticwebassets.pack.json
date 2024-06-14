@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\obj\\Debug\\net8.0\\compressed\\fi6pbkopwd.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\obj\\Debug\\net8.0\\scopedcss\\bundle\\bookinventory.styles.css",
+      "PackagePath": "staticwebassets\\bookinventory.styles.css"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "B:\\WEB DEVELOPMENT\\C#\\Scynett Project\\bookinventory\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.bookinventory.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.bookinventory.props",
+      "PackagePath": "build\\bookinventory.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.bookinventory.props",
+      "PackagePath": "buildMultiTargeting\\bookinventory.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.bookinventory.props",
+      "PackagePath": "buildTransitive\\bookinventory.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

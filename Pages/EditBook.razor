@@ -1,0 +1,121 @@
+﻿@page "/addbook"
+@page "/addbook/{id:int}"
+@using bookinventory.Models
+@inject NavigationManager NavigationManager
+
+<PageTitle>@title</PageTitle>
+<h1>Book Inventory</h1>
+<h3>@title</h3>
+
+@if (book is null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-sm-4">
+            <EditForm Model="@book" OnValidSubmit="HandleSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <InputText id="title" @bind-Value="book.Title" class="form-control"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <InputText id="author" @bind-Value="book.Author" class="form-control"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <InputSelect id="genre" @bind-Value="book.Genre" class="form-select">
+                        <option value="">Select Genre</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Religion/Spirituality">Religion/Spirituality</option>
+                        <option value="Comics">Comics</option>
+                        <option value="Philosophy">Philosophy</option>
+                        <option value="History">History</option>
+                        <option value="Science">Science</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Historical Fiction">Historical Fiction</option>
+                    </InputSelect>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <InputNumber id="genre" @bind-Value="book.Price" class="form-control"></InputNumber>
+                </div>
+                <div class="mb-3">
+                    <label for="publicationDate" class="form-label">Publication Date</label>
+                    <InputDate id="publicationDate" @bind-Value="book.PublicationDate" class="form-control"></InputDate>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Book</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private Book? book;
+
+    private string title = string.Empty;
+    protected override void OnParametersSet()
+    {
+        if (Id is not null)
+        {
+            Book foundBook = BookCatalogue.GetBook(Id.Value);
+            book = new()
+                {
+                    Id = foundBook.Id,
+                    Title = foundBook.Title,
+                    Author = foundBook.Author,
+                    Genre = foundBook.Genre,
+                    Price = foundBook.Price,
+                    PublicationDate = foundBook.PublicationDate,
+                };
+
+                title = $"Edit {book.Title}";
+        }
+        else
+        {
+            book = new()
+                {
+                    Title = string.Empty,
+                    Author = string.Empty,
+                    Genre = string.Empty,
+                    Price = 0.00M,
+                    PublicationDate = DateTime.UtcNow,
+                };
+
+                title = "Add a New Book";
+        }
+    }
+
+    private void HandleSubmit()
+    {
+        if (book!.Id == 0)
+        {
+            BookCatalogue.AddBook(book);
+        }
+        else
+        {
+            BookCatalogue.UpdateBook(book);
+        }
+
+        NavigationManager.NavigateTo("/");
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+
+}

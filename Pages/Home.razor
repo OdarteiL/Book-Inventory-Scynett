@@ -1,0 +1,83 @@
+﻿@page "/"
+@using bookinventory.Models
+@inject NavigationManager NavigationManager
+
+<PageTitle>Home</PageTitle>
+
+<h1>Book Inventory</h1>
+
+<div class="row mb-4">
+    <div class="col-sm-6">
+        <button type="button" class="btn btn-primary" @onclick="CreateBook">Add Book</button>
+    </div>
+</div>
+
+@if (books is null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+
+    <DeleteBook Book="@currentBook" OnClose="@onDeleteModalClose">
+
+    </DeleteBook>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table table-dark">
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Publication Date</th>
+            <th></th>
+        </thead>
+        <tbody>
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Genre</td>
+                    <td>@book.Price</td>
+                    <td>@book.PublicationDate.ToString("MM/dd/yyy")</td>
+                    <td><button class="btn btn-primary" @onclick="(() => EditBook(book.Id))">Edit</button></td>
+                    <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" @onclick="(() => currentBook = book)">Del</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Book[]? books;
+
+    private Book? currentBook;
+
+    protected override void OnInitialized()
+    {
+        books = BookCatalogue.GetBooks();
+    }
+
+    private void CreateBook()
+    {
+        NavigationManager.NavigateTo("/addbook");
+    }
+
+    private void EditBook(int id)
+    {
+        NavigationManager.NavigateTo($"/addbook/{id}");
+    }
+
+    private void onDeleteModalClose(bool accepted)
+    {
+        if(accepted)
+        {
+            BookCatalogue.DeleteBook(currentBook!.Id);
+            books = BookCatalogue.GetBooks();
+        }
+    }
+
+}
